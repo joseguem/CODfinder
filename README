@@ -1,0 +1,26 @@
+For running CODfinder.R from the terminal:
+
+1. Open R from the terminal.
+2. source("CODfinder.R")
+3. codfinder(inputfile="path/to/input",window.size=,outfile="path/to/output")
+
+inputfile: 
+Expression matrix where each column is a gene (in chromosome order) and each row is the numeric value of expression for each sample for all genes in the chromosome. 
+Include a header with gene names
+CODfinder.R uses tab delimited .txt format (sep="\t") as inputfile, in case your expression matrix is written in a different format, change line 19 in "sep=".
+
+Window.size:
+Use 4 for window.size as default.
+
+Outfile:
+The standard output include:
+-correlation file (*.correl.csv): (n+1)*(n+1) matrix, where n is the number of genes. Extra row and column with gene names.
+-binsignal file (*.binsignal.csv): includes the value of binsignal (mean.cf) as defined in TOPDOM, and p-value for each bin.
+-COD file (*.COD.csv): list of CODs detected after filtering. For each COD start and end coordinates (in gene number) are listed.
+
+Output files are written in .csv as default. If you want it in a different format see lines 174, 178 and 182.
+If you don't need correlation or binsignal file, add ## to lines 175 and/or 179 respectively.
+
+Correlation file can be open directly in Gitools (version 2.3.0)
+
+
